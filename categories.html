@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorías | Finanzas Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#4f46e5', 'bg-dark': '#0f172a', 'bg-card': '#1e293b' } } }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Outfit', sans-serif; }
+    .sidebar-link.active { background: rgba(79, 70, 229, 0.15); border-left: 4px solid #4f46e5; color: white; }
+  </style>
+</head>
+<body class="bg-bg-dark text-slate-100 min-h-screen flex flex-col md:flex-row">
+  
+  <aside class="w-full md:w-64 bg-slate-900/50 border-r border-slate-800 flex flex-col">
+    <div class="p-6 flex items-center gap-3">
+      <div class="bg-indigo-600 p-2 rounded-lg">💰</div>
+      <h1 class="text-xl font-black text-white">Finanzas Pro</h1>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 mt-4">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all"><span>📊</span> Dashboard</a>
+      <a href="workspaces.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all"><span>💼</span> Workspaces</a>
+      <a href="categories.html" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all"><span>🏷️</span> Categorías</a>
+      <a href="transactions.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all"><span>💸</span> Movimientos</a>
+      <a href="beneficiaries.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all"><span>🤝</span> Beneficiarios</a>
+    </nav>
+  </aside>
+
+  <main class="flex-1 p-8 lg:p-12">
+    <header class="flex flex-col sm:flex-row justify-between items-start gap-4 mb-10">
+      <div>
+        <h2 class="text-3xl font-extrabold text-white">Categorías de <span class="text-indigo-400">Gastos e Ingresos</span></h2>
+        <p class="text-slate-400">Organiza tus movimientos financieros por etiquetas</p>
+      </div>
+      <button class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-indigo-600/20 transition-all">
+        + Nueva Categoría
+      </button>
+    </header>
+
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+      <!-- Income Categories -->
+      <section>
+        <h3 class="text-lg font-bold text-emerald-400 mb-4 flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Ingresos
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-emerald-500/50 transition-all cursor-pointer">
+            <div class="h-10 w-10 bg-emerald-500/10 rounded-xl flex items-center justify-center text-lg">📁</div>
+            <span class="font-bold flex-1">Salarios</span>
+            <span class="text-xs text-slate-500">85%</span>
+          </div>
+          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-emerald-500/50 transition-all cursor-pointer">
+            <div class="h-10 w-10 bg-emerald-500/10 rounded-xl flex items-center justify-center text-lg">🎁</div>
+            <span class="font-bold flex-1">Regalos</span>
+            <span class="text-xs text-slate-500">10%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Expense Categories -->
+      <section>
+        <h3 class="text-lg font-bold text-red-400 mb-4 flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-red-400"></span> Gastos
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
+            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🍔</div>
+            <span class="font-bold flex-1">Alimentos</span>
+            <span class="text-xs text-slate-500">40%</span>
+          </div>
+          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
+            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🚌</div>
+            <span class="font-bold flex-1">Transporte</span>
+            <span class="text-xs text-slate-500">20%</span>
+          </div>
+          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
+            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🎮</div>
+            <span class="font-bold flex-1">Entretenimiento</span>
+            <span class="text-xs text-slate-500">15%</span>
+          </div>
+          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
+            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🏠</div>
+            <span class="font-bold flex-1">Hogar</span>
+            <span class="text-xs text-slate-500">25%</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="./js/api.js"></script>
+  <script src="./js/auth.js"></script>
+</body>
+</html>
