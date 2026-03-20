@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const token = localStorage.getItem('finance_token');
-  const path = window.location.pathname;
-  const isAuthPage = path.includes('login.html') || path.includes('register.html');
+  const path = window.location.pathname.toLowerCase();
+  const isAuthPage = path.includes('login') || 
+                     path.includes('register') || 
+                     document.getElementById('loginForm') !== null || 
+                     document.getElementById('registerForm') !== null;
 
   // === SESSION CHECK (GLOBAL) ===
   async function checkSession() {
@@ -15,6 +18,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       localStorage.removeItem('finance_token');
       localStorage.removeItem('finance_workspace');
       if (!isAuthPage) window.location.href = 'login.html';
+      return null;
+    }
+
+    // Auto-redirect from auth pages if already logged in
+    if (isAuthPage) {
+      const activeWorkspace = localStorage.getItem('finance_workspace');
+      window.location.href = activeWorkspace ? 'index.html' : 'workspaces.html';
       return null;
     }
 
