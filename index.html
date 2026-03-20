@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Finanzas Personales</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="dashboard-container" id="meContainer">
+    <div class="dashboard-header">
+      <div>
+        <h1 id="welcomeMsg" style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.2rem;">Cargando...</h1>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Resumen de tu cuenta</p>
+      </div>
+      <button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
+    </div>
+
+    <div class="glass-container" style="max-width: 100%; margin-bottom: 2rem;">
+      <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">Información del Usuario (JSON / `/api/auth/me`)</h2>
+      <pre id="userData" style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; color: #a5b4fc; font-size: 0.9rem;"></pre>
+    </div>
+
+    <div class="card-grid">
+      <div class="stat-card">
+        <h3>Balance Total</h3>
+        <div class="value">$0.00</div>
+      </div>
+      <div class="stat-card">
+        <h3>Ingresos (Mes)</h3>
+        <div class="value" style="background: linear-gradient(to right, #4ade80, #22c55e); -webkit-background-clip: text;">+$0.00</div>
+      </div>
+      <div class="stat-card">
+        <h3>Gastos (Mes)</h3>
+        <div class="value" style="background: linear-gradient(to right, #f87171, #ef4444); -webkit-background-clip: text;">-$0.00</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/api.js"></script>
+  <script src="./js/auth.js"></script>
+</body>
+</html>
