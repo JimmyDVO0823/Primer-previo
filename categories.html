@@ -62,17 +62,8 @@
         <h3 class="text-lg font-bold text-emerald-400 mb-4 flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Ingresos
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-emerald-500/50 transition-all cursor-pointer">
-            <div class="h-10 w-10 bg-emerald-500/10 rounded-xl flex items-center justify-center text-lg">📁</div>
-            <span class="font-bold flex-1">Salarios</span>
-            <span class="text-xs text-slate-500">85%</span>
-          </div>
-          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-emerald-500/50 transition-all cursor-pointer">
-            <div class="h-10 w-10 bg-emerald-500/10 rounded-xl flex items-center justify-center text-lg">🎁</div>
-            <span class="font-bold flex-1">Regalos</span>
-            <span class="text-xs text-slate-500">10%</span>
-          </div>
+        <div id="incomeGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Dynamically populated -->
         </div>
       </section>
 
@@ -81,27 +72,8 @@
         <h3 class="text-lg font-bold text-red-400 mb-4 flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-red-400"></span> Gastos
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
-            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🍔</div>
-            <span class="font-bold flex-1">Alimentos</span>
-            <span class="text-xs text-slate-500">40%</span>
-          </div>
-          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
-            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🚌</div>
-            <span class="font-bold flex-1">Transporte</span>
-            <span class="text-xs text-slate-500">20%</span>
-          </div>
-          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
-            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🎮</div>
-            <span class="font-bold flex-1">Entretenimiento</span>
-            <span class="text-xs text-slate-500">15%</span>
-          </div>
-          <div class="bg-bg-card p-4 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-red-500/50 transition-all cursor-pointer">
-            <div class="h-10 w-10 bg-red-500/10 rounded-xl flex items-center justify-center text-lg">🏠</div>
-            <span class="font-bold flex-1">Hogar</span>
-            <span class="text-xs text-slate-500">25%</span>
-          </div>
+        <div id="expenseGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Dynamically populated -->
         </div>
       </section>
     </div>
@@ -109,5 +81,6 @@
 
   <script src="./js/api.js"></script>
   <script src="./js/auth.js"></script>
+  <script src="./js/categories.js"></script>
 </body>
 </html>

@@ -66,42 +66,19 @@
               <th class="px-6 py-4 text-right">Monto</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-slate-800">
-            <tr class="hover:bg-white/5 transition-all group">
-              <td class="px-6 py-4 text-sm text-slate-400">20 Mar, 2026</td>
-              <td class="px-6 py-4 font-bold text-white">Pago de Nómina</td>
-              <td class="px-6 py-4"><span class="px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-lg text-[10px] font-bold uppercase">Trabajo</span></td>
-              <td class="px-6 py-4 text-sm text-slate-300">Empresa S.A.</td>
-              <td class="px-6 py-4 text-right font-black text-emerald-400">+$2,500.00</td>
-            </tr>
-            <tr class="hover:bg-white/5 transition-all group">
-              <td class="px-6 py-4 text-sm text-slate-400">19 Mar, 2026</td>
-              <td class="px-6 py-4 font-bold text-white">Supermercado</td>
-              <td class="px-6 py-4"><span class="px-2 py-1 bg-red-500/10 text-red-400 rounded-lg text-[10px] font-bold uppercase">Alimentos</span></td>
-              <td class="px-6 py-4 text-sm text-slate-300">Mercacentro</td>
-              <td class="px-6 py-4 text-right font-black text-slate-200">-$85.50</td>
-            </tr>
-            <tr class="hover:bg-white/5 transition-all group">
-              <td class="px-6 py-4 text-sm text-slate-400">18 Mar, 2026</td>
-              <td class="px-6 py-4 font-bold text-white">Suscripción Netflix</td>
-              <td class="px-6 py-4"><span class="px-2 py-1 bg-red-500/10 text-red-400 rounded-lg text-[10px] font-bold uppercase">Ocio</span></td>
-              <td class="px-6 py-4 text-sm text-slate-300">Netflix Inc.</td>
-              <td class="px-6 py-4 text-right font-black text-slate-200">-$15.99</td>
-            </tr>
+          <tbody id="transactionBody" class="divide-y divide-slate-800">
+            <!-- Dynamically populated -->
           </tbody>
         </table>
       </div>
-      <div class="p-6 bg-slate-900/30 flex justify-between items-center text-xs text-slate-500">
-        <p>Mostrando 3 de 12 movimientos</p>
-        <div class="flex gap-2">
-          <button class="px-3 py-1 bg-slate-800 rounded-lg hover:bg-slate-700 transition-all">Anterior</button>
-          <button class="px-3 py-1 bg-slate-800 rounded-lg hover:bg-slate-700 transition-all">Siguiente</button>
-        </div>
+      <div id="paginationInfo" class="p-6 bg-slate-900/30 flex justify-between items-center text-xs text-slate-500">
+        <!-- Dynamically populated -->
       </div>
     </div>
   </main>
 
   <script src="./js/api.js"></script>
   <script src="./js/auth.js"></script>
+  <script src="./js/transactions.js"></script>
 </body>
 </html>

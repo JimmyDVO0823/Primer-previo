@@ -85,8 +85,8 @@
       <div class="flex items-center gap-3 bg-slate-900/50 p-2 rounded-2xl border border-slate-800">
         <div class="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center text-white">JD</div>
         <div class="hidden sm:block">
-          <p class="text-xs font-bold text-white leading-tight">Juan David</p>
-          <p class="text-[10px] text-slate-500">Workspace: Personal</p>
+          <p id="userNameHeader" class="text-xs font-bold text-white leading-tight">Cargando...</p>
+          <p id="activeWorkspaceName" class="text-[10px] text-slate-500">Workspace: Selección...</p>
         </div>
       </div>
     </header>
@@ -98,28 +98,28 @@
         <div class="bg-bg-card border border-slate-700/50 p-6 rounded-3xl group hover:border-indigo-500/50 transition-all">
           <div class="flex justify-between items-start mb-4">
             <div class="p-2 bg-indigo-500/10 rounded-xl text-indigo-400">💳 Balance</div>
-            <span class="text-xs text-indigo-400 font-bold px-2 py-1 bg-indigo-400/10 rounded-full">+2.5%</span>
+            <span class="text-xs text-indigo-400 font-bold px-2 py-1 bg-indigo-400/10 rounded-full">Actual</span>
           </div>
-          <div class="text-3xl font-black mb-1">$4,250.00</div>
-          <p class="text-xs text-slate-500">Actualizado hace 5 min</p>
+          <div id="balanceVal" class="text-3xl font-black mb-1">$0.00</div>
+          <p class="text-xs text-slate-500">Saldo acumulado</p>
         </div>
 
         <div class="bg-bg-card border border-slate-700/50 p-6 rounded-3xl group hover:border-emerald-500/50 transition-all">
           <div class="flex justify-between items-start mb-4">
             <div class="p-2 bg-emerald-500/10 rounded-xl text-emerald-400">📈 Ingresos</div>
-            <span class="text-xs text-emerald-400 font-bold px-2 py-1 bg-emerald-400/10 rounded-full">+12%</span>
+            <span class="text-xs text-emerald-400 font-bold px-2 py-1 bg-emerald-400/10 rounded-full">Mes</span>
           </div>
-          <div class="text-3xl font-black mb-1">$8,100.00</div>
-          <p class="text-xs text-slate-500">Total ingresos este mes</p>
+          <div id="incomeVal" class="text-3xl font-black mb-1">$0.00</div>
+          <p class="text-xs text-slate-500">Total ingresos registrados</p>
         </div>
 
         <div class="bg-bg-card border border-slate-700/50 p-6 rounded-3xl group hover:border-red-500/50 transition-all">
           <div class="flex justify-between items-start mb-4">
             <div class="p-2 bg-red-500/10 rounded-xl text-red-400">📉 Gastos</div>
-            <span class="text-xs text-red-400 font-bold px-2 py-1 bg-red-400/10 rounded-full">-5%</span>
+            <span class="text-xs text-red-400 font-bold px-2 py-1 bg-red-400/10 rounded-full">Mes</span>
           </div>
-          <div class="text-3xl font-black mb-1">$3,850.00</div>
-          <p class="text-xs text-slate-500">Total gastos este mes</p>
+          <div id="expenseVal" class="text-3xl font-black mb-1">$0.00</div>
+          <p class="text-xs text-slate-500">Total gastos registrados</p>
         </div>
       </div>
 
@@ -128,7 +128,7 @@
         <!-- Visual "Chart" Preview -->
         <div class="bg-bg-card border border-slate-700/50 rounded-3xl p-8 h-80 flex flex-col">
           <h3 class="font-bold text-slate-400 mb-6 uppercase tracking-widest text-xs">Análisis Mensual</h3>
-          <div class="flex-1 flex items-end gap-3 px-4">
+          <div id="chartContainer" class="flex-1 flex items-end gap-3 px-4">
             <div class="flex-1 bg-indigo-500/20 rounded-t-xl h-[40%] hover:bg-indigo-500/40 transition-all"></div>
             <div class="flex-1 bg-indigo-500/30 rounded-t-xl h-[60%] hover:bg-indigo-500/40 transition-all"></div>
             <div class="flex-1 bg-indigo-500/40 rounded-t-xl h-[80%] hover:bg-indigo-500/40 transition-all"></div>
@@ -147,37 +147,8 @@
             <h3 class="font-bold text-slate-400 uppercase tracking-widest text-xs">Actividad Reciente</h3>
             <a href="transactions.html" class="text-xs text-indigo-400 hover:underline">Ver todo</a>
           </div>
-          <div class="space-y-4">
-            <div class="flex items-center justify-between p-4 bg-slate-900/30 rounded-2xl border border-white/5">
-              <div class="flex items-center gap-3">
-                <div class="p-2 bg-emerald-500/10 rounded-xl">💰</div>
-                <div>
-                  <p class="text-sm font-bold">Salario Mensual</p>
-                  <p class="text-[10px] text-slate-500">20 Mar, 2026 • Ingresos</p>
-                </div>
-              </div>
-              <p class="text-emerald-400 font-bold">+$2,500.00</p>
-            </div>
-            <div class="flex items-center justify-between p-4 bg-slate-900/30 rounded-2xl border border-white/5">
-              <div class="flex items-center gap-3">
-                <div class="p-2 bg-indigo-500/10 rounded-xl">🍔</div>
-                <div>
-                  <p class="text-sm font-bold">Cena Restaurante</p>
-                  <p class="text-[10px] text-slate-500">19 Mar, 2026 • Alimentos</p>
-                </div>
-              </div>
-              <p class="text-slate-200 font-bold">-$45.00</p>
-            </div>
-            <div class="flex items-center justify-between p-4 bg-slate-900/30 rounded-2xl border border-white/5">
-              <div class="flex items-center gap-3">
-                <div class="p-2 bg-indigo-500/10 rounded-xl">⚡</div>
-                <div>
-                  <p class="text-sm font-bold">Servicios Públicos</p>
-                  <p class="text-[10px] text-slate-500">18 Mar, 2026 • Hogar</p>
-                </div>
-              </div>
-              <p class="text-slate-200 font-bold">-$120.00</p>
-            </div>
+          <div id="recentActivityList" class="space-y-4">
+            <!-- Dynamically populated -->
           </div>
         </div>
       </div>
@@ -189,12 +160,13 @@
         <span>⚙️</span> Debug: Datos de Usuario
       </summary>
       <div class="mt-4 bg-black/40 rounded-2xl p-6 border border-white/5 font-mono text-xs text-indigo-300">
-        <pre id="userData">// No se han cargado datos aún</pre>
+        <pre id="userData">// Carga de sesión completa</pre>
       </div>
     </details>
   </main>
 
   <script src="./js/api.js"></script>
   <script src="./js/auth.js"></script>
+  <script src="./js/dashboard.js"></script>
 </body>
 </html>
