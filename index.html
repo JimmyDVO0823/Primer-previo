@@ -3,36 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard | Finanzas Personales</title>
+  <title>Dashboard | Finanzas Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4f46e5',
+            'bg-dark': '#0f172a',
+            'bg-card': '#1e293b',
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Outfit', sans-serif; }
+    .glass {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
 </head>
-<body>
-  <div class="dashboard-container" id="meContainer">
-    <div class="dashboard-header">
-      <div>
-        <h1 id="welcomeMsg" style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.2rem;">Cargando...</h1>
-        <p style="color: var(--text-secondary); font-size: 0.9rem;">Resumen de tu cuenta</p>
+<body class="bg-bg-dark text-slate-100 min-h-screen p-4 sm:p-8">
+  <div class="max-w-6xl mx-auto" id="meContainer">
+    <!-- Navbar -->
+    <nav class="glass rounded-2xl p-4 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+      <div class="flex items-center gap-3">
+        <div class="bg-indigo-600 p-2 rounded-lg shadow-lg shadow-indigo-500/30">
+          <span class="text-xl">💰</span>
+        </div>
+        <h1 class="text-2xl font-black bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Finanzas Pro</h1>
       </div>
-      <button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
+      <div class="flex items-center gap-4">
+        <div class="h-10 w-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center">👤</div>
+        <button id="logoutBtn" class="bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 px-5 py-2 rounded-xl font-bold transition-all hover:-translate-y-0.5 active:translate-y-0">
+          Cerrar Sesión
+        </button>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="mb-10">
+      <h2 id="welcomeMsg" class="text-4xl sm:text-5xl font-extrabold mb-2 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+        Cargando...
+      </h2>
+      <p class="text-slate-400 text-lg">Resumen financiero en tiempo real</p>
     </div>
 
-    <div class="glass-container" style="max-width: 100%; margin-bottom: 2rem;">
-      <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">Información del Usuario (JSON / `/api/auth/me`)</h2>
-      <pre id="userData" style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; color: #a5b4fc; font-size: 0.9rem;"></pre>
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <!-- Balance -->
+      <div class="bg-bg-card border border-slate-700/50 p-8 rounded-3xl relative overflow-hidden group transition-all hover:bg-slate-800/50">
+        <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500"></div>
+        <p class="text-slate-500 font-bold uppercase tracking-wider text-xs mb-4">Balance Total</p>
+        <div class="text-4xl font-black mb-2">$0.00</div>
+        <div class="text-xs text-slate-500">Actualizado hace un momento</div>
+      </div>
+
+      <!-- Income -->
+      <div class="bg-bg-card border border-slate-700/50 p-8 rounded-3xl relative overflow-hidden group transition-all hover:bg-slate-800/50">
+        <div class="absolute top-0 left-0 w-full h-1 bg-emerald-500"></div>
+        <p class="text-slate-500 font-bold uppercase tracking-wider text-xs mb-4 text-emerald-500">Ingresos (Mes)</p>
+        <div class="text-4xl font-black mb-2 text-emerald-400">+$0.00</div>
+        <div class="text-xs text-emerald-500/70">↑ 0% vs mes anterior</div>
+      </div>
+
+      <!-- Expenses -->
+      <div class="bg-bg-card border border-slate-700/50 p-8 rounded-3xl relative overflow-hidden group transition-all hover:bg-slate-800/50">
+        <div class="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
+        <p class="text-slate-500 font-bold uppercase tracking-wider text-xs mb-4 text-red-500">Gastos (Mes)</p>
+        <div class="text-4xl font-black mb-2 text-red-400">-$0.00</div>
+        <div class="text-xs text-red-500/70">↓ 0% vs mes anterior</div>
+      </div>
     </div>
 
-    <div class="card-grid">
-      <div class="stat-card">
-        <h3>Balance Total</h3>
-        <div class="value">$0.00</div>
+    <!-- API Data Debug Panel -->
+    <div class="bg-slate-900/60 border border-slate-700/50 rounded-3xl p-8 shadow-2xl">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="text-indigo-400">⚡</span>
+        <h3 class="text-xl font-bold bg-gradient-to-r from-slate-200 to-slate-400 bg-clip-text text-transparent">Datos de Sesión</h3>
       </div>
-      <div class="stat-card">
-        <h3>Ingresos (Mes)</h3>
-        <div class="value" style="background: linear-gradient(to right, #4ade80, #22c55e); -webkit-background-clip: text;">+$0.00</div>
-      </div>
-      <div class="stat-card">
-        <h3>Gastos (Mes)</h3>
-        <div class="value" style="background: linear-gradient(to right, #f87171, #ef4444); -webkit-background-clip: text;">-$0.00</div>
+      <div class="bg-black/40 rounded-2xl p-6 border border-white/5 overflow-hidden">
+        <pre id="userData" class="text-indigo-300 font-mono text-sm leading-relaxed overflow-x-auto"></pre>
       </div>
     </div>
   </div>
