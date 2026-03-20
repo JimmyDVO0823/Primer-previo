@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ workspaceId: parseInt(workspaceId), nombre })
+        body: JSON.stringify({ workspaceId: parseInt(workspaceId), name: nombre })
       });
       const data = await response.json();
       if (response.status === 200 || response.status === 201) {

@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ nombre })
+        body: JSON.stringify({ name: nombre })
       });
       const data = await response.json();
       if (response.status === 200 || response.status === 201) {

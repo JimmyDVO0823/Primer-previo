@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const body = {
       workspaceId: parseInt(workspaceId),
-      tipo: tipo,
-      categoriaId: foundCat.id,
-      monto: parseFloat(monto),
-      descripcion: desc,
-      fecha: new Date().toISOString().split('T')[0] // Today
+      type: tipo,
+      categoryId: foundCat.id,
+      amount: parseFloat(monto),
+      description: desc,
+      date: new Date().toISOString().split('T')[0] // Today
     };
 
     const { status, data } = await apiCreateTransaction(token, body);

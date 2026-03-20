@@ -114,7 +114,7 @@ async function apiCreateCategoria(token, workspaceId, nombre, tipo) {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json' 
       },
-      body: JSON.stringify({ workspaceId, nombre, tipo })
+      body: JSON.stringify({ workspaceId: parseInt(workspaceId), name: nombre, type: tipo })
     });
     const data = await response.json();
     return { status: response.status, data };

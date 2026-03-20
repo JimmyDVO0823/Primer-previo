@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // === WORKSPACE CONTEXT CHECK ===
   const activeWorkspace = localStorage.getItem('finance_workspace');
-  if (user && !activeWorkspace && !path.includes('workspaces.html') && !isAuthPage) {
+  if (user && !activeWorkspace && !path.includes('workspaces') && !isAuthPage) {
     // If authenticated but no workspace selected, force selection
     showToast('Por favor, selecciona un espacio de trabajo', 'info');
     setTimeout(() => {
