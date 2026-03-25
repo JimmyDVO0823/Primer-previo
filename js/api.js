@@ -13,7 +13,7 @@ async function apiRegister(nombre, email, password) {
       },
       body: JSON.stringify({ nombre, email, password })
     });
-    
+
     const data = await response.json();
     return { status: response.status, data };
   } catch (error) {
@@ -34,7 +34,7 @@ async function apiLogin(email, password) {
       },
       body: JSON.stringify({ email, password })
     });
-    
+
     const data = await response.json();
     return { status: response.status, data };
   } catch (error) {
@@ -54,7 +54,7 @@ async function apiGetMe(token) {
         'Authorization': `Bearer ${token}`
       }
     });
-    
+
     const data = await response.json();
     return { status: response.status, data };
   } catch (error) {
@@ -110,9 +110,9 @@ async function apiCreateCategoria(token, workspaceId, nombre, tipo) {
   try {
     const response = await fetch(`${API_BASE_URL}/categorias`, {
       method: 'POST',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ workspaceId: parseInt(workspaceId), name: nombre, type: tipo })
     });
@@ -142,9 +142,9 @@ async function apiCreateTransaction(token, body) {
   try {
     const response = await fetch(`${API_BASE_URL}/transactions`, {
       method: 'POST',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
     });
@@ -198,7 +198,7 @@ function showToast(message, type = 'success') {
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
   toast.innerText = message;
-  
+
   container.appendChild(toast);
 
   // Auto remove

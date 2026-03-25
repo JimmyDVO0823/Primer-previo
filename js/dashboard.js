@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderRecentActivity(transactions) {
     recentActivityList.innerHTML = '';
-    
+
     if (transactions.length === 0) {
       recentActivityList.innerHTML = '<p class="text-slate-500 text-xs text-center italic py-4">Sin actividad reciente</p>';
       return;
@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const isIngreso = t.tipo === 'INGRESO';
       const div = document.createElement('div');
       div.className = 'flex items-center justify-between p-4 bg-slate-900/30 rounded-2xl border border-white/5 hover:border-indigo-500/30 transition-all';
-      
+
       const date = new Date(t.fecha).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' });
-      
+
       let emoji = isIngreso ? '💰' : '💸';
       if (t.categoriaNombre && t.categoriaNombre.toLowerCase().includes('comida')) emoji = '🍔';
 

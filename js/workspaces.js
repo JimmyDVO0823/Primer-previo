@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isActive = activeWsId == ws.id;
       const card = document.createElement('div');
       card.className = `bg-bg-card border-2 ${isActive ? 'border-indigo-500/50' : 'border-slate-700/50'} p-6 rounded-3xl relative hover:border-indigo-500/30 transition-all cursor-pointer group`;
-      
+
       card.innerHTML = `
         ${isActive ? '<div class="absolute top-4 right-4 text-xs font-bold text-indigo-400 bg-indigo-400/10 px-2 py-1 rounded-full uppercase">Activo</div>' : ''}
         <div class="h-12 w-12 ${isActive ? 'bg-indigo-500/20' : 'bg-slate-800'} rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-indigo-500 transition-all">
@@ -68,13 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
   async function handleCreateWorkspace() {
     const nombre = prompt('Nombre del nuevo Workspace:');
     if (!nombre) return;
-    
+
     // Attempt to create (assuming POST /api/workspaces exists, or fallback to mock logic)
     // For this prototype, if it fails, we show error but ideally there's a POST endpoint.
     try {
       const response = await fetch(`${API_BASE_URL}/workspaces`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
