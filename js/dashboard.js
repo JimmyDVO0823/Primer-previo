@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Get Workspaces to find the name of the active one
-    const { data: wsData } = await apiGetWorkspaces(token);
+    const usuarioId = (userData.data && typeof userData.data === 'object') ? userData.data.id : 1; 
+    const { data: wsData } = await apiGetWorkspaces(token, usuarioId);
     const activeWs = (wsData.data || []).find(w => w.id == workspaceId);
     if (activeWs) {
       activeWorkspaceName.innerText = `Workspace: ${activeWs.nombre}`;

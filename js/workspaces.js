@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!token) return;
 
   async function loadWorkspaces() {
-    const { status, data } = await apiGetWorkspaces(token);
+    const { data: meData } = await apiGetMe(token);
+    // Safety check: if meData.data is an object with an id, use it. Otherwise, fallback or allow undefined.
+    const usuarioId = (meData.data && typeof meData.data === 'object') ? meData.data.id : 1; 
+
+    const { status, data } = await apiGetWorkspaces(token, usuarioId);
     if (status === 200) {
       renderWorkspaces(data.data || []);
     } else {
@@ -69,19 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const nombre = prompt('Nombre del nuevo Workspace:');
     if (!nombre) return;
 
-    // Attempt to create (assuming POST /api/workspaces exists, or fallback to mock logic)
-    // For this prototype, if it fails, we show error but ideally there's a POST endpoint.
     try {
-      const response = await fetch(`${API_BASE_URL}/workspaces`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name: nombre })
-      });
-      const data = await response.json();
-      if (response.status === 200 || response.status === 201) {
+      const { data: meData } = await apiGetMe(token);
+      const usuarioId = (meData.data && typeof meData.data === 'object') ? meData.data.id : 1;
+
+      const { status, data } = await apiCreateWorkspace(token, usuarioId, nombre);
+      if (status === 200 || status === 201) {
         showToast('Workspace creado', 'success');
         loadWorkspaces();
       } else {

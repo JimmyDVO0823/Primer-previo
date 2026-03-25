@@ -65,11 +65,28 @@ async function apiGetMe(token) {
 
 // === WORKSPACES ===
 
-async function apiGetWorkspaces(token) {
+async function apiGetWorkspaces(token, usuarioId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/workspaces`, {
+    const response = await fetch(`${API_BASE_URL}/workspaces?usuarioId=${usuarioId}`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiCreateWorkspace(token, usuarioId, nombre) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/workspaces?usuarioId=${usuarioId}`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({ nombre: nombre })
     });
     const data = await response.json();
     return { status: response.status, data };
@@ -175,6 +192,77 @@ async function apiGetBeneficiarios(token) {
 async function apiGetDashboardResumen(token) {
   try {
     const response = await fetch(`${API_BASE_URL}/dashboard/resumen-mensual`, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+// === CUENTAS ===
+
+async function apiGetCuentas(token) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cuentas`, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiCreateCuenta(token, body) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cuentas`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify(body)
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiGetCuenta(token, id) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cuentas/${id}`, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiGetCuentaSaldo(token, id) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cuentas/${id}/saldo`, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiGetCuentasResumen(token) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cuentas/resumen`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     });
