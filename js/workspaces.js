@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const workspaceGrid = document.querySelector('.grid');
-  const createBtn = document.querySelector('header button');
   const token = localStorage.getItem('finance_token');
   const activeWsId = localStorage.getItem('finance_workspace');
 
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderWorkspaces(workspaces) {
-    // Clear the grid first (leaving the "Add New" button)
+    // Clear the grid first
     workspaceGrid.innerHTML = '';
 
     workspaces.forEach(ws => {
@@ -46,16 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       card.addEventListener('click', () => selectWorkspace(ws.id));
       workspaceGrid.appendChild(card);
     });
-
-    // Add back the "Nuevo Entorno" button
-    const addNew = document.createElement('div');
-    addNew.className = 'border-2 border-dashed border-slate-800 p-6 rounded-3xl flex flex-col items-center justify-center text-slate-500 hover:border-indigo-500/50 hover:text-indigo-400 transition-all cursor-pointer min-h-[220px]';
-    addNew.innerHTML = `
-      <span class="text-4xl mb-2">+</span>
-      <p class="font-bold">Nuevo Entorno</p>
-    `;
-    addNew.addEventListener('click', handleCreateWorkspace);
-    workspaceGrid.appendChild(addNew);
   }
 
   async function selectWorkspace(id) {
@@ -68,28 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast(data.mensaje || 'Error al seleccionar', 'error');
     }
   }
-
-  async function handleCreateWorkspace() {
-    const nombre = prompt('Nombre del nuevo Workspace:');
-    if (!nombre) return;
-
-    try {
-      const { data: meData } = await apiGetMe(token);
-      const usuarioId = (meData.data && typeof meData.data === 'object') ? meData.data.id : 1;
-
-      const { status, data } = await apiCreateWorkspace(token, usuarioId, nombre);
-      if (status === 200 || status === 201) {
-        showToast('Workspace creado', 'success');
-        loadWorkspaces();
-      } else {
-        showToast(data.mensaje || 'Error al crear', 'error');
-      }
-    } catch (e) {
-      showToast('Error de conexión', 'error');
-    }
-  }
-
-  createBtn.addEventListener('click', handleCreateWorkspace);
 
   loadWorkspaces();
 });

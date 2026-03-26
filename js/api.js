@@ -78,22 +78,7 @@ async function apiGetWorkspaces(token, usuarioId) {
   }
 }
 
-async function apiCreateWorkspace(token, usuarioId, nombre) {
-  try {
-    const response = await fetch(`${API_BASE_URL}/workspaces?usuarioId=${usuarioId}`, {
-      method: 'POST',
-      headers: { 
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({ nombre: nombre })
-    });
-    const data = await response.json();
-    return { status: response.status, data };
-  } catch (error) {
-    return { status: 500, data: { mensaje: 'Error de red' } };
-  }
-}
+
 
 async function apiSelectWorkspace(token, workspaceId) {
   try {
@@ -108,11 +93,11 @@ async function apiSelectWorkspace(token, workspaceId) {
   }
 }
 
-// === CATEGORIAS ===
+// === CATEGORÍAS ===
 
-async function apiGetCategorias(token) {
+async function apiGetCategorias(token, workspaceId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/categorias`, {
+    const response = await fetch(`${API_BASE_URL}/categorias?workspaceId=${workspaceId}`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -127,11 +112,28 @@ async function apiCreateCategoria(token, workspaceId, nombre, tipo) {
   try {
     const response = await fetch(`${API_BASE_URL}/categorias`, {
       method: 'POST',
-      headers: {
+      headers: { 
         'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json' 
       },
-      body: JSON.stringify({ workspaceId: parseInt(workspaceId), name: nombre, type: tipo })
+      body: JSON.stringify({ 
+        workspaceId: parseInt(workspaceId), 
+        nombre: nombre, 
+        tipo: tipo 
+      })
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiDeleteCategoria(token, id) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/categorias/${id}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` }
     });
     const data = await response.json();
     return { status: response.status, data };
@@ -142,9 +144,9 @@ async function apiCreateCategoria(token, workspaceId, nombre, tipo) {
 
 // === TRANSACCIONES ===
 
-async function apiGetTransactions(token) {
+async function apiGetTransactions(token, workspaceId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/transactions`, {
+    const response = await fetch(`${API_BASE_URL}/transactions?workspaceId=${workspaceId}`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -174,10 +176,45 @@ async function apiCreateTransaction(token, body) {
 
 // === BENEFICIARIOS ===
 
-async function apiGetBeneficiarios(token) {
+// === BENEFICIARIOS ===
+
+async function apiGetBeneficiarios(token, workspaceId) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/beneficiarios?workspaceId=${workspaceId}`, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiCreateBeneficiario(token, workspaceId, nombre) {
   try {
     const response = await fetch(`${API_BASE_URL}/beneficiarios`, {
-      method: 'GET',
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({ 
+        workspaceId: parseInt(workspaceId), 
+        nombre: nombre 
+      })
+    });
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    return { status: 500, data: { mensaje: 'Error de red' } };
+  }
+}
+
+async function apiDeleteBeneficiario(token, id) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/beneficiarios/${id}`, {
+      method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
     const data = await response.json();
